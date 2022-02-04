@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Button} from 'react-native';
 
-const ListItem = ({item}) => {
+const ListItem = ({item, deleteItem}) => {
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
         <Text style={styles.listItemText}>{item.text}</Text>
-        <Button title="Delete" />
+        <Button title="Delete" onPress={() => deleteItem(item.id)} />
       </View>
     </TouchableOpacity>
   );
