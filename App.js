@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, Alert} from 'react-native';
 import uuid from 'react-native-uuid';
 
 import Header from './components/Header';
 import ListItem from './components/ListItem';
+import AddItem from './components/AddItem';
 
 const App = () => {
   const [items, setItems] = useState([
@@ -27,9 +28,19 @@ const App = () => {
     });
   };
 
+  const addItem = text => {
+    if (!text) {
+      Alert.alert('Error: Please enter some text!');
+      return;
+    }
+    setItems(prevItems => {
+      return [{id: uuid.v4(), text}, ...prevItems];
+    });
+  };
   return (
     <View style={styles.container}>
       <Header title="Shopping List" />
+      <AddItem onAddItem={addItem} />
       <FlatList
         data={items}
         renderItem={({item}) => (
