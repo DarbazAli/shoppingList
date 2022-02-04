@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
+import Header from './components/Header';
+
 const App = () => {
   return (
     <View style={styles.container}>
+      <Header title="Shopping List" />
       <Text style={styles.heading}>Hello World</Text>
       <Image
         source={{uri: 'https://randomuser.me/api/portraits/men/9.jpg'}}
@@ -18,8 +21,7 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 60,
   },
   heading: {
     fontSize: 20,
